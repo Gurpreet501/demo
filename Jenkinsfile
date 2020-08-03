@@ -7,4 +7,10 @@ node{
 stage("checkout"){
 git  url: 'https://github.com/Gurpreet501/demo.git'
 }
+
+stage("build"){
+sh "${mavenCommand} clean package"
 }
+
+}
+
