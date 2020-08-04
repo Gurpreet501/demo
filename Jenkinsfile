@@ -16,5 +16,14 @@ stage("docker image creation"){
   sh "docker build -t gurpreet501/demo:${buildnumber} ."
 }
 
+stage("docker image push to dockerhub")
+{
+	withCredentials([string(credentialsId: 'dockerhubcredentail', variable: 'docker')]) {
+    sh "docker login -u gurpreet501 -p ${docker} "
+}
+ sh "docker push gurpreet501/demo:${buildnumber}"
+}
+
+
 }
 
