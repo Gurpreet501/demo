@@ -12,5 +12,9 @@ stage("build"){
 sh "${mavenCommand} clean package"
 }
 
+stage("docker image creation"){
+  sh "docker build -t gurpreet501/demo:${buildnumber} ."
+}
+
 }
 
